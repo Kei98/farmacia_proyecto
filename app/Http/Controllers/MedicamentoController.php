@@ -14,7 +14,7 @@ class MedicamentoController extends Controller
      */
     public function index()
     {
-        //
+        return Medicamento::with("proveedors")->get();
     }
 
     /**

@@ -14,7 +14,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        //
+        return Proveedor::with("empresa_provs")->get();
     }
 
     /**
