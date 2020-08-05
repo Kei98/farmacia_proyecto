@@ -14,17 +14,8 @@ class MedicamentoController extends Controller
      */
     public function index()
     {
+//        Puede ser proveedors, inventarios o linea_detalles
         return Medicamento::with("proveedors")->get();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -35,7 +26,16 @@ class MedicamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "nombre" => "required",
+            "descripcion" => "required",
+            "tipo_admin" => "required",
+            "precio" => "required",
+            "proveedor_id" => "required"
+        ]);
+
+        $medicamento = Medicamento::create($fields);
+        return response()->json("Se insertó correctamente", 201);
     }
 
     /**
@@ -46,19 +46,9 @@ class MedicamentoController extends Controller
      */
     public function show(Medicamento $medicamento)
     {
-        //
+        return $medicamento;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Medicamento  $medicamento
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Medicamento $medicamento)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +59,16 @@ class MedicamentoController extends Controller
      */
     public function update(Request $request, Medicamento $medicamento)
     {
-        //
+        $fields = $request->validate([
+            "nombre" => "required",
+            "descripcion" => "required",
+            "tipo_admin" => "required",
+            "precio" => "required",
+            "proveedor_id" => "required"
+        ]);
+
+        $medicamento -> update($fields);
+        return response()->json("Se modificó correctamente", 200);
     }
 
     /**
@@ -80,6 +79,7 @@ class MedicamentoController extends Controller
      */
     public function destroy(Medicamento $medicamento)
     {
-        //
+        $medicamento->delete();
+        return response()->json("Se eliminó correctamente", 200);
     }
 }

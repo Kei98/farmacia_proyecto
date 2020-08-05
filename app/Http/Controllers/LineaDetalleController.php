@@ -14,18 +14,9 @@ class LineaDetalleController extends Controller
      */
     public function index()
     {
-        //
+        return Linea_detalle::with("ventas")->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,17 @@ class LineaDetalleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "nombre_med" => "required",
+            "precio_u_med" => "required",
+            "cantidad" => "required",
+            "subtotal" => "required",
+            "venta_id" => "required",
+            "medicamento_id" => "required"
+        ]);
+
+        $linea_detalle = Linea_detalle::create($fields);
+        return response()->json("Se insertó correctamente", 201);
     }
 
     /**
@@ -46,19 +47,9 @@ class LineaDetalleController extends Controller
      */
     public function show(Linea_detalle $linea_detalle)
     {
-        //
+        return $linea_detalle;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Linea_detalle  $linea_detalle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Linea_detalle $linea_detalle)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +60,17 @@ class LineaDetalleController extends Controller
      */
     public function update(Request $request, Linea_detalle $linea_detalle)
     {
-        //
+        $fields = $request->validate([
+            "nombre_med" => "required",
+            "precio_u_med" => "required",
+            "cantidad" => "required",
+            "subtotal" => "required",
+            "venta_id" => "required",
+            "medicamento_id" => "required"
+        ]);
+
+        $linea_detalle ->update($fields);
+        return response()->json("Se modificó correctamente", 200);
     }
 
     /**
@@ -80,6 +81,7 @@ class LineaDetalleController extends Controller
      */
     public function destroy(Linea_detalle $linea_detalle)
     {
-        //
+        $linea_detalle->delete();
+        return response()->json("Se eliminó correctamente", 200);
     }
 }

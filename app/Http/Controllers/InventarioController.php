@@ -14,17 +14,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Inventario::with("medicamentos")->get();
     }
 
     /**
@@ -35,7 +25,13 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "cantidad" => "required",
+            "medicamento_id" => "required"
+        ]);
+
+        $inventario = Inventario::create($fields);
+        return response()->json("Se insertó correctamente", 201);
     }
 
     /**
@@ -46,19 +42,9 @@ class InventarioController extends Controller
      */
     public function show(Inventario $inventario)
     {
-        //
+        return $inventario;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Inventario  $inventario
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Inventario $inventario)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +55,13 @@ class InventarioController extends Controller
      */
     public function update(Request $request, Inventario $inventario)
     {
-        //
+        $fields = $request->validate([
+            "cantidad" => "required",
+            "medicamento_id" => "required"
+        ]);
+
+        $inventario ->update($fields);
+        return response()->json("Se modificó correctamente", 200);
     }
 
     /**
@@ -80,6 +72,7 @@ class InventarioController extends Controller
      */
     public function destroy(Inventario $inventario)
     {
-        //
+        $inventario->delete();
+        return response()->json("Se eliminó correctamente", 200);
     }
 }
