@@ -14,18 +14,10 @@ class VentaController extends Controller
      */
     public function index()
     {
-        //
+        //Relacionado con linea detalle
+        return Venta::with("lineadetalls")->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +27,17 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "fecha" => "required",
+            "descuento" => "required",
+            "impuesto" => "required",
+            "montofinal" => "required",
+            "id_cliente" => "required",
+            "id_personal" => "required"
+        ]);
+
+        $venta = Venta::created($fields);
+        return response()->json("Se insertó correctamente",201);
     }
 
     /**
@@ -46,18 +48,7 @@ class VentaController extends Controller
      */
     public function show(Venta $venta)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Venta  $venta
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Venta $venta)
-    {
-        //
+        return $venta;
     }
 
     /**
@@ -69,7 +60,17 @@ class VentaController extends Controller
      */
     public function update(Request $request, Venta $venta)
     {
-        //
+        $fields = $request->validate([
+            "fecha" => "required",
+            "descuento" => "required",
+            "impuesto" => "required",
+            "montofinal" => "required",
+            "id_cliente" => "required",
+            "id_personal" => "required"
+        ]);
+
+        $venta -> update($fields);
+        return response()->json("Se modificó correctamente",200);
     }
 
     /**
@@ -80,6 +81,7 @@ class VentaController extends Controller
      */
     public function destroy(Venta $venta)
     {
-        //
+        $venta -> delete();
+        return response()->json("Se eliminó correctamente",200);
     }
 }

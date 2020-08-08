@@ -15,7 +15,10 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-
+            $table->date("fecha"); /**not null genera auto*/
+            $table->double("descuento");
+            $table->double("impuesto");
+            $table->double("montofinal");
             $table->foreignId("personal_id")->references("id")->on("usuarios");
             $table->foreignId("cliente_id")->references("id")->on("usuarios");
             $table->timestamps();
