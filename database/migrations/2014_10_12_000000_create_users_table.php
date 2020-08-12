@@ -15,14 +15,19 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string("utype",7);
+            $table->string("name", 20)->unique();
+            $table->string("email", 50)->unique();
+            $table->string("id_person", 12)->unique();
+            $table->string("telephone", 18);
+            $table->timestamp("email_verified_at")->nullable();
+            $table->string("password");
             $table->rememberToken();
             $table->timestamps();
         });
     }
+//    php artisan ui vue --auth
+//
 
     /**
      * Reverse the migrations.
