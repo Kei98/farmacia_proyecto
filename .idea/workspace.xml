@@ -21,12 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c52041f9-7c91-4821-8395-d14ddd4773a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DetailLineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DetailLineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/TelNumber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/TelNumber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/UType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/UType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +290,7 @@
       <workItem from="1596775572770" duration="6995000" />
       <workItem from="1596863009919" duration="732000" />
       <workItem from="1597080782104" duration="9728000" />
-      <workItem from="1597111251108" duration="32941000" />
+      <workItem from="1597111251108" duration="39983000" />
     </task>
     <servers />
   </component>

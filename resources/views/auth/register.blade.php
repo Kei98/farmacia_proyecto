@@ -13,15 +13,38 @@
 
                         <div class="form-group row">
                             <label for="utype" class="col-md-4 col-form-label text-md-right">{{ __('User type') }}</label>
-
+                            <?php
+                            $tUsers = ["admin" => "Administrator", "client" => "Client", "staff" => "Staff"];
+                            ?>
                             <div class="col-md-6">
-                                <input id="utype" type="text" class="form-control @error('utype') is-invalid @enderror" name="utype" value="{{ old('utype') }}" required autocomplete="utype" autofocus>
+                                <select class="form-control @error('utype') is-invalid @enderror" name="utype" id="utype">
+
+                                    <option disabled selected>Select User</option>
+
+                                    @foreach ($tUsers as $key => $value)
+
+                                        <option value="{{ $key }}">
+
+                                            {{ $value }}
+
+                                        </option>
+
+                                    @endforeach
+
+                                </select>
+
+                                @error('utype')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                @enderror
+                            {{--    <input id="utype" type="text" class="form-control @error('utype') is-invalid @enderror" name="utype" value="{{ old('utype') }}" required autocomplete="utype" autofocus>
 
                                 @error('utype')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror--}}
                             </div>
                         </div>
 
