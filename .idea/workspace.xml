@@ -21,52 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c52041f9-7c91-4821-8395-d14ddd4773a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Empresa_prov.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmpresaProvController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InventarioController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LineaDetalleController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MedicamentoController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProveedorController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VentaController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Inventario.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Linea_detalle.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Medicamento.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Proveedor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Usuario.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Venta.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EmpresaProvFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/InventarioFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/LineaDetalleFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/MedicamentoFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ProveedorFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UsuarioFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/VentaFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_03_075507_create_empresa_provs_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_03_075629_create_usuarios_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_03_075823_create_proveedors_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_03_075830_create_medicamentos_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_03_075917_create_inventarios_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_03_080122_create_ventas_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_03_080146_create_linea_detalles_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/EmpresaProvSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/InventarioSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/LineaDetalleSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/MedicamentoSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ProveedorSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsuarioSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/VentaSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DetailLineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DetailLineController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DrugController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DrugController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InventoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InventoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_12_031834_create_providers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_12_031834_create_providers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_12_031914_create_drugs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_12_031914_create_drugs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_12_031942_create_inventories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_12_031942_create_inventories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_12_032011_create_sales_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_12_032011_create_sales_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_12_032045_create_detail_lines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_12_032045_create_detail_lines_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,7 +297,7 @@
       <workItem from="1596775572770" duration="6995000" />
       <workItem from="1596863009919" duration="732000" />
       <workItem from="1597080782104" duration="9728000" />
-      <workItem from="1597111251108" duration="20694000" />
+      <workItem from="1597111251108" duration="25763000" />
     </task>
     <servers />
   </component>

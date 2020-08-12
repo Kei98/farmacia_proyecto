@@ -12,19 +12,9 @@ class DrugController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function index(){
+//      It could be providers, inventories or detail_line
+        return Drug::with("providers")->get();
     }
 
     /**
@@ -35,7 +25,16 @@ class DrugController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "description" => "required",
+            "administration" => "required",
+            "price" => "required",
+            "id_provider" => "required"
+        ]);
+
+        $drug = Drug::create($fields);
+        return response()->json("Successfully added", 201);
     }
 
     /**
@@ -46,18 +45,7 @@ class DrugController extends Controller
      */
     public function show(Drug $drug)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Drug  $drug
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Drug $drug)
-    {
-        //
+        return  $drug;
     }
 
     /**
@@ -69,7 +57,16 @@ class DrugController extends Controller
      */
     public function update(Request $request, Drug $drug)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "description" => "required",
+            "administration" => "required",
+            "price" => "required",
+            "id_provider" => "required"
+        ]);
+
+        $drug->update($fields);
+        return response()->json("Successfully modified", 200);
     }
 
     /**
@@ -80,6 +77,7 @@ class DrugController extends Controller
      */
     public function destroy(Drug $drug)
     {
-        //
+        $drug->delete();
+        return response()->json("Successfully deleted", 200);
     }
 }

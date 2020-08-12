@@ -14,17 +14,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Inventory::with("drugs")->get();
     }
 
     /**
@@ -35,7 +25,13 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "amount" => "required",
+            "id_drug" => "required"
+        ]);
+
+        $inventory = Inventory::create($fields);
+        return response()->json("Successfully added", 201);
     }
 
     /**
@@ -46,18 +42,7 @@ class InventoryController extends Controller
      */
     public function show(Inventory $inventory)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Inventory  $inventory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Inventory $inventory)
-    {
-        //
+        return $inventory;
     }
 
     /**
@@ -69,7 +54,13 @@ class InventoryController extends Controller
      */
     public function update(Request $request, Inventory $inventory)
     {
-        //
+        $fields = $request->validate([
+            "amount" => "required",
+            "id_drug" => "required"
+        ]);
+
+        $inventory ->update($fields);
+        return response()->json("Successfully modified", 200);
     }
 
     /**
@@ -80,6 +71,7 @@ class InventoryController extends Controller
      */
     public function destroy(Inventory $inventory)
     {
-        //
+        $inventory->delete();
+        return response()->json("Successfully deleted", 200);
     }
 }

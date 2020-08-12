@@ -15,6 +15,11 @@ class CreateDrugsTable extends Migration
     {
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
+            $table->string("name", 60);
+            $table->string("description", 500);
+            $table->string("administration", 15);
+            $table->double("price");
+            $table->foreignId("id_provider")->references("id")->on("providers");
             $table->timestamps();
         });
     }

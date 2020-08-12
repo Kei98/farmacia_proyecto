@@ -15,6 +15,7 @@ class CreateProvidersTable extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("id_company")->references("id")->on("companies");
             $table->timestamps();
         });
     }

@@ -14,17 +14,7 @@ class DetailLineController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Detail_line::with("sales")->get();
     }
 
     /**
@@ -35,7 +25,17 @@ class DetailLineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "drug_name" => "required",
+            "drug_price" => "required",
+            "amount" => "required",
+            "subtotal" => "required",
+            "id_sales" => "required",
+            "id_drug" => "required"
+        ]);
+
+        $detail_line = Detail_line::create($fields);
+        return response()->json("Successfully added", 201);
     }
 
     /**
@@ -46,19 +46,9 @@ class DetailLineController extends Controller
      */
     public function show(Detail_line $detail_line)
     {
-        //
+        return  $detail_line;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Detail_line  $detail_line
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Detail_line $detail_line)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +59,17 @@ class DetailLineController extends Controller
      */
     public function update(Request $request, Detail_line $detail_line)
     {
-        //
+        $fields = $request->validate([
+            "drug_name" => "required",
+            "drug_price" => "required",
+            "amount" => "required",
+            "subtotal" => "required",
+            "id_sales" => "required",
+            "id_drug" => "required"
+        ]);
+
+        $detail_line ->update($fields);
+        return response()->json("Successfully modified", 200);
     }
 
     /**
@@ -80,6 +80,7 @@ class DetailLineController extends Controller
      */
     public function destroy(Detail_line $detail_line)
     {
-        //
+        $detail_line->delete();
+        return  response()->json("Successfully deleted", 200);
     }
 }

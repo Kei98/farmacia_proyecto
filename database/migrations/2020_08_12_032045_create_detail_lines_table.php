@@ -15,6 +15,12 @@ class CreateDetailLinesTable extends Migration
     {
         Schema::create('detail_lines', function (Blueprint $table) {
             $table->id();
+            $table->string("drug_name", 60);
+            $table->double("drug_price");
+            $table->double("amount");
+            $table->double("subtotal");
+            $table->foreignId("id_sale")->references("id")->on("sales");
+            $table->foreignId("id_drug")->references("id")->on("drugs");
             $table->timestamps();
         });
     }
