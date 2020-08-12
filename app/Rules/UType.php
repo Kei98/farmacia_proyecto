@@ -39,6 +39,6 @@ class UType implements Rule
      */
     public function message()
     {
-        return 'The :attribute must be a valid type of user (admin, staff or client)';
+        return 'The User type must be a valid type of user (admin, staff or client)';
     }
 }

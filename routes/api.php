@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Hay que hacerlo después de la autenticación
+
 Route::apiResource("drugs", "DrugController");
 
 Route::apiResource("inventories", "InventoryController");

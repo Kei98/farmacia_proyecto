@@ -25,7 +25,7 @@ class TelNumber implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (str_split($value)[0] === '+'){
+        if (str_split(trim($value))[0] === '+'){
             return true;
         }else {
             return false;

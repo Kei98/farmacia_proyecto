@@ -81,6 +81,6 @@ class DetailLineController extends Controller
     public function destroy(Detail_line $detail_line)
     {
         $detail_line->delete();
-        return  response()->json("Successfully deleted", 200);
+        return response()->json("Successfully deleted", 200);
     }
 }

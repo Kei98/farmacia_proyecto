@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Rules\TelNumber;
+use App\Rules\UType;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -50,11 +52,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'utype' => ['required', 'string', 'max:7'],
+            'utype' => ['required', 'string', 'max:7', new UType],
             'name' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'id_person' => ['required', 'string', 'max:12'],
-            'telephone' => ['required', 'string', 'max:18'],
+            'telephone' => ['required', 'string', 'max:18', new TelNumber],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
