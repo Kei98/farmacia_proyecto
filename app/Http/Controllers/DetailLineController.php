@@ -30,7 +30,7 @@ class DetailLineController extends Controller
             "drug_price" => "required",
             "amount" => "required",
             "subtotal" => "required",
-            "id_sales" => "required",
+            "id_sale" => "required",
             "id_drug" => "required"
         ]);
 
@@ -64,7 +64,7 @@ class DetailLineController extends Controller
             "drug_price" => "required",
             "amount" => "required",
             "subtotal" => "required",
-            "id_sales" => "required",
+            "id_sale" => "required",
             "id_drug" => "required"
         ]);
 
