@@ -14,18 +14,9 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        return Sale::with("detail_lines")->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,18 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "date" => "required",
+            "discount" => "required",
+            "tax" => "required",
+            "final_amount" => "required",
+            "id_client" => "required",
+            "id_staff" => "required"
+        ]);
+
+        $sale = Sale::create($fields);
+        return  response()->json("Successfully added", 201);
+
     }
 
     /**
@@ -46,18 +48,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Sale  $sale
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Sale $sale)
-    {
-        //
+        return $sale;
     }
 
     /**
@@ -69,7 +60,17 @@ class SaleController extends Controller
      */
     public function update(Request $request, Sale $sale)
     {
-        //
+        $fields = $request->validate([
+            "date" => "required",
+            "discount" => "required",
+            "tax" => "required",
+            "final_amount" => "required",
+            "id_client" => "required",
+            "id_staff" => "required"
+        ]);
+
+        $sale->update($fields);
+        return  response()->json("Successfully modified", 200);
     }
 
     /**
@@ -80,6 +81,7 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        //
+        $sale->delete();
+        return response()->json("Successfully deleted",200);
     }
 }

@@ -33,7 +33,7 @@ class DrugController extends Controller
             "id_provider" => "required"
         ]);
 
-        $drug = Drug::create($fields);
+        $drug = Drug::created($fields);
         return response()->json("Successfully added", 201);
     }
 
