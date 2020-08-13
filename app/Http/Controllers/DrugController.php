@@ -13,6 +13,7 @@ class DrugController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+
 //      It could be providers, inventories or detail_line
         return Drug::with("providers")->get();
     }

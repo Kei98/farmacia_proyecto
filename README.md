@@ -25,4 +25,25 @@ To run this project you need to (if you are a Linux or Mac user you can skip ste
     ```
     php artisan migrate
     ```
-8. You can now go to http://farmacia_proyecto.test. You should see the Laravel page. If not, you can rename this project to "farmacia" and try again (http://farmacia.test)
+
+8. This is a project with vue, so you have to run the next command in order to download/install the dependencies:
+	```
+	composer require laravel/ui
+	```
+
+9. You will have to create the files for the authentication, so run the command:
+	```
+	php artisan ui vue --auth
+	```
+
+10. You will need to install the npm dependencies, therefore, run the command:
+	```
+	npm install
+	```
+
+11. Finally, run the command:
+	```
+	npm install
+	```
+
+12. You can now go to http://farmacia_proyecto.test. You should see the Laravel page. If not, you can rename this project to "farmacia" and try again (http://farmacia.test)
