@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Drug;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DrugController extends Controller
 {
@@ -26,6 +28,12 @@ class DrugController extends Controller
      */
     public function store(Request $request)
     {
+//        $user = Auth::user();
+//        if($user->getUtype() === "admin"){
+//            return $user;
+//        }else {
+////
+//        }
         $fields = $request->validate([
             "name" => "required",
             "description" => "required",

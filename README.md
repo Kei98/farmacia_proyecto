@@ -46,4 +46,9 @@ To run this project you need to (if you are a Linux or Mac user you can skip ste
 	npm install
 	```
 
-12. You can now go to http://farmacia_proyecto.test. You should see the Laravel page. If not, you can rename this project to "farmacia" and try again (http://farmacia.test)
+12. Run the command to create the admin user:
+	```
+	php artisan migrate:fresh --seed
+	```
+
+13. You can now go to http://farmacia_proyecto.test. You should see the Laravel page. If not, you can rename this project to "farmacia" and try again (http://farmacia.test)

@@ -16,7 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'utype','name', 'email', 'id_person', 'telephone', 'password',
+        'utype',
+        'name',
+        'email',
+        'id_person',
+        'telephone',
+        'password',
     ];
 
     /**
@@ -38,11 +43,15 @@ class User extends Authenticatable
     ];
 
 //    Esto va aquí?
-    public function ventasC() {
-        return $this->hasMany("App\Venta", "cliente_id");
+    public function cSales() {
+        return $this->hasMany("App\Sale", "id_client");
     }
 
-    public function ventasP() {
-        return $this->hasMany("App\Venta", "personal_id");
+    public function sSales() {
+        return $this->hasMany("App\Sale", "id_staff");
+    }
+
+    public function getUtype() {
+        return $this->utype;
     }
 }

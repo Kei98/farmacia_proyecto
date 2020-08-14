@@ -8,8 +8,8 @@ class Company extends Model
 {
     protected $guarded = ["id", "created_at", "updated_at"];
 
-    public function Provider()
-    {
+    public function providers() {
+
         return $this->hasMany("App\Provider", "id_company");
     }
 }

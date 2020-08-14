@@ -8,10 +8,10 @@ class Provider extends Model
 {
     protected $guarded = ["id", "created_at", "updated_at"];
 
-    public function Company() {
-        return $this->belongsTo("App\Provider", "id_company");
+    public function companies() {
+        return $this->belongsTo("App\Company", "id_company");
     }
-    public function Drug() {
+    public function drugs() {
         return $this->hasMany("App\Drug", "id_drug");
     }
 }
