@@ -14,18 +14,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        return Company::with("provider")->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,14 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "phone_number" => "required",
+            "legal_id" => "required",
+            "address" => "requiered"
+        ]);
+        $company = Company::create($fields);
+        return response()->json("Successfully added", 201);
     }
 
     /**
@@ -46,19 +44,9 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        return $company;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Company $company)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +57,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "phone_number" => "required",
+            "legal_id" => "required",
+            "address" => "requiered"
+        ]);
+        $company -> update($fields);
+        return response()->json("Successfully modified", 200);
     }
 
     /**
@@ -80,6 +75,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return response()->json("Successfully deleted", 200);
     }
 }

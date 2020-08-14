@@ -14,18 +14,9 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        //
+        return Provider::with("Provider")->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,13 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "phone_number" => "required",
+            "id_company" => "required"
+        ]);
+        $provider = Provider::create($fields);
+        return response()->json("Successfully added", 201);
     }
 
     /**
@@ -46,19 +43,9 @@ class ProviderController extends Controller
      */
     public function show(Provider $provider)
     {
-        //
+        return $provider;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Provider  $provider
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Provider $provider)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +56,13 @@ class ProviderController extends Controller
      */
     public function update(Request $request, Provider $provider)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "phone_number" => "required",
+            "id_company" => "required"
+        ]);
+        $provider -> update($fields);
+        return response()->json("Successfully modified", 200);
     }
 
     /**
@@ -80,6 +73,7 @@ class ProviderController extends Controller
      */
     public function destroy(Provider $provider)
     {
-        //
+        $provider->delete();
+        return response()->json("Successfully deleted", 200);
     }
 }
