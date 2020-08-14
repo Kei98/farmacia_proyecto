@@ -11,6 +11,13 @@ class InventorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('inventories')->insert([
+            "amount" => "1000",
+            "id_drug" => "1"
+        ]);
+        DB::table('inventories')->insert([
+            "amount" => "700",
+            "id_drug" => "2"
+        ]);
     }
 }

@@ -27,7 +27,7 @@ class Administration implements Rule
     {
         if ($value === 'ocular' || $value === 'parenteral' || $value === 'topical' || $value === 'sublingual' ||
             $value === 'otic' || $value === 'intranasal' || $value === 'inhalation' ||
-            $value === 'rectal' || $value === 'vaginal') {
+            $value === 'rectal' || $value === 'vaginal' || $value === 'oral') {
             return true;
         }else {
             return false;

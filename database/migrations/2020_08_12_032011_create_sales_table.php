@@ -15,7 +15,7 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->date("date");
+            $table->string("date");
             $table->double("discount");
             $table->double("tax");
             $table->double("final_amount");

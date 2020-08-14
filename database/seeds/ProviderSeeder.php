@@ -11,6 +11,10 @@ class ProviderSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('providers')->insert([
+            "name" => "1000",
+            "phone_number" => "+50687568143",
+            "id_company" => "1"
+        ]);
     }
 }
