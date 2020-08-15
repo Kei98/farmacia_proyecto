@@ -12,6 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
+{{--                            Debería hacer un if else con el utype del usuario actual y rellenar así el tUsers acorde--}}
                             <label for="utype" class="col-md-4 col-form-label text-md-right">{{ __('User type') }}</label>
                             <?php
                             $tUsers = ["admin" => "Administrator", "client" => "Client", "staff" => "Staff"];
