@@ -90,4 +90,10 @@ class DrugController extends Controller
         $drug->delete();
         return response()->json("Successfully deleted", 200);
     }
+
+
+    public function getAll()
+    {
+        return Drug::get();
+    }
 }

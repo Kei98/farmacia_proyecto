@@ -43,7 +43,7 @@ To run this project you need to (if you are a Linux or Mac user you can skip ste
 
 11. Finally, run the command:
 	```
-	npm install
+	npm run dev
 	```
 
 12. Run the command to create the admin user:

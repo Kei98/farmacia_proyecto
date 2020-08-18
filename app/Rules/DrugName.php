@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use App\Http\Controllers\DrugController;
 use Illuminate\Contracts\Validation\Rule;
-require DrugController::class;
+
 
 class DrugName implements Rule
 {
@@ -27,6 +27,7 @@ class DrugName implements Rule
      */
     public function passes($attribute, $value)
     {
+        $drugController = new DrugController();
 
         //
     }
