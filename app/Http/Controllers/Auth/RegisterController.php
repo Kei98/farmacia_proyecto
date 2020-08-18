@@ -55,8 +55,8 @@ class RegisterController extends Controller
             'utype' => ['required', 'string', 'max:7', new UType],
             'name' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'id_person' => ['required', 'string', 'max:12'],
-            'telephone' => ['required', 'string', 'max:18', new TelNumber],
+            'id_person' => ['required', 'string', 'max:12', 'unique:users'],
+            'telephone' => ['required', 'string', 'max:18', new TelNumber, 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }

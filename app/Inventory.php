@@ -10,6 +10,6 @@ class Inventory extends Model
 
 //    Revisar bien estos métodos. Creo que es más una relación de 1:1
     public function drugs() {
-        return $this->hasMany("App\Drug", "id_drug");
+        return $this->hasOne("App\Drug", "id_drug");
     }
 }

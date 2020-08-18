@@ -14,7 +14,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return Company::with("provider")->get();
+        return Company::with("providers")->get();
     }
 
 

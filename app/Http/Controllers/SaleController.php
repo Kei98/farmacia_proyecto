@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Date;
 use App\Sale;
 use Illuminate\Http\Request;
 
@@ -27,12 +28,12 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "date" => "required",
-            "discount" => "required",
-            "tax" => "required",
-            "final_amount" => "required",
-            "id_client" => "required",
-            "id_staff" => "required"
+            "date" => ["required", "string", "min:16", "max:16", new Date],
+            "discount" => ["required", "numeric", "min:0"],
+            "tax" => ["required", "numeric", "min:0"],
+            "final_amount" => ["required", "numeric"],
+            "id_client" => ["required", "integer", "min:1"],
+            "id_staff" => ["required", "integer", "min:1"]
         ]);
 
         $sale = Sale::create($fields);
@@ -61,12 +62,12 @@ class SaleController extends Controller
     public function update(Request $request, Sale $sale)
     {
         $fields = $request->validate([
-            "date" => "required",
-            "discount" => "required",
-            "tax" => "required",
-            "final_amount" => "required",
-            "id_client" => "required",
-            "id_staff" => "required"
+            "date" => ["required", "string", "min:16", "max:16", new Date],
+            "discount" => ["required", "numeric", "min:0"],
+            "tax" => ["required", "numeric", "min:0"],
+            "final_amount" => ["required", "numeric"],
+            "id_client" => ["required", "integer", "min:1"],
+            "id_staff" => ["required", "integer", "min:1"]
         ]);
 
         $sale->update($fields);

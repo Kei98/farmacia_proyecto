@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Drug;
+use App\Rules\Administration;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,11 +36,11 @@ class DrugController extends Controller
 ////
 //        }
         $fields = $request->validate([
-            "name" => "required",
-            "description" => "required",
-            "administration" => "required",
-            "price" => "required",
-            "id_provider" => "required"
+            "name" => ["required", "string", "min:3", "max:40"],
+            "description" => ["required", "string", "min:50", "max:500"],
+            "administration" => ["required", "string", new Administration, "max:15"],
+            "price" => ["required", "numeric"],
+            "id_provider" => ["required", "integer", "min:1"]
         ]);
 
         $drug = Drug::created($fields);
@@ -67,11 +68,11 @@ class DrugController extends Controller
     public function update(Request $request, Drug $drug)
     {
         $fields = $request->validate([
-            "name" => "required",
-            "description" => "required",
-            "administration" => "required",
-            "price" => "required",
-            "id_provider" => "required"
+            "name" => ["required", "string", "min:3", "max:40"],
+            "description" => ["required", "string", "min:50", "max:500"],
+            "administration" => ["required", "string", new Administration, "max:15"],
+            "price" => ["required", "numeric"],
+            "id_provider" => ["required", "integer", "min:1"]
         ]);
 
         $drug->update($fields);

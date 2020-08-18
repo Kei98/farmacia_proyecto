@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Provider;
+use App\Rules\TelNumber;
 use Illuminate\Http\Request;
 
 class ProviderController extends Controller
@@ -14,7 +15,7 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        return Provider::with("Provider")->get();
+        return Provider::with("drugs")->get();
     }
 
 
@@ -27,9 +28,9 @@ class ProviderController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "name" => "required",
-            "phone_number" => "required",
-            "id_company" => "required"
+            "name" => ["required", "string", "min:10", "max:50"],
+            "phone_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
+            "id_company" => ["required", "integer", "min:1"]
         ]);
         $provider = Provider::create($fields);
         return response()->json("Successfully added", 201);
@@ -57,9 +58,9 @@ class ProviderController extends Controller
     public function update(Request $request, Provider $provider)
     {
         $fields = $request->validate([
-            "name" => "required",
-            "phone_number" => "required",
-            "id_company" => "required"
+            "name" => ["required", "string", "min:10", "max:50"],
+            "phone_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
+            "id_company" => ["required", "integer", "min:1"]
         ]);
         $provider -> update($fields);
         return response()->json("Successfully modified", 200);

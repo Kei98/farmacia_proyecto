@@ -26,12 +26,12 @@ class DetailLineController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "drug_name" => "required",
-            "drug_price" => "required",
-            "amount" => "required",
-            "subtotal" => "required",
-            "id_sale" => "required",
-            "id_drug" => "required"
+            "drug_name" => ["required","min:3", "max:40"],
+            "drug_price" => ["required", "numeric"],
+            "amount" => ["required", "integer", "min:1"],
+            "subtotal" => ["required", "numeric"],
+            "id_sale" => ["required", "integer", "min:1"],
+            "id_drug" => ["required", "integer", "min:1"]
         ]);
 
         $detail_line = Detail_line::create($fields);

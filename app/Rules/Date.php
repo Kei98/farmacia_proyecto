@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class UType implements Rule
+class Date implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,11 +25,17 @@ class UType implements Rule
      */
     public function passes($attribute, $value)
     {
-        if ($value === "admin" || $value === "staff") {
+//        Date will be in the next format:
+//        DD/MM/YYYY HH:MM
+        $nums[] = explode("/", $value);
+        $year[] = explode(" ", $nums[2]);
+        $time[] = explode(":", $year[1]);
+        if($nums[0] > 0 && $nums[0] < 32 && $nums[1] > 0 && $nums[1] < 13
+            && $year[0] > 2009 && $year[0] < 2021 && $time[0] > -1 && $time[0] < 24
+            && $time[1] > -1 && $time[1] < 60) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -39,6 +45,6 @@ class UType implements Rule
      */
     public function message()
     {
-        return 'The User type must be a valid type of user (admin or staff)';
+        return 'The validation error message.';
     }
 }

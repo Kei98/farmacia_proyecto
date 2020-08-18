@@ -26,8 +26,8 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "amount" => "required",
-            "id_drug" => "required"
+            "amount" => ["required", "integer", "min:1"],
+            "id_drug" => ["required", "integer", "min:1"]
         ]);
 
         $inventory = Inventory::create($fields);
@@ -55,8 +55,8 @@ class InventoryController extends Controller
     public function update(Request $request, Inventory $inventory)
     {
         $fields = $request->validate([
-            "amount" => "required",
-            "id_drug" => "required"
+            "amount" => ["required", "integer", "min:1"],
+            "id_drug" => ["required", "integer", "min:1"]
         ]);
 
         $inventory ->update($fields);

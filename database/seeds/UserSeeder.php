@@ -29,14 +29,5 @@ class UserSeeder extends Seeder
             "password" => bcrypt("23456789")
         ]);
 
-        DB::table('users')->insert([
-            "utype" => "client",
-            "name" => "client",
-            "email" => "client@client.com",
-            "id_person" => "107530571",
-            "telephone" => "+50663593260",
-            "password" => bcrypt("34567890")
-        ]);
-
     }
 }

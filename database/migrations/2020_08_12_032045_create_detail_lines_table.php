@@ -15,7 +15,7 @@ class CreateDetailLinesTable extends Migration
     {
         Schema::create('detail_lines', function (Blueprint $table) {
             $table->id();
-            $table->string("drug_name", 60);
+            $table->string("drug_name", 40);
             $table->double("drug_price");
             $table->double("amount");
             $table->double("subtotal");

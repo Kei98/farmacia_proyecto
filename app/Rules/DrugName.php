@@ -2,9 +2,11 @@
 
 namespace App\Rules;
 
+use App\Http\Controllers\DrugController;
 use Illuminate\Contracts\Validation\Rule;
+require DrugController::class;
 
-class UType implements Rule
+class DrugName implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,11 +27,8 @@ class UType implements Rule
      */
     public function passes($attribute, $value)
     {
-        if ($value === "admin" || $value === "staff") {
-            return true;
-        } else {
-            return false;
-        }
+
+        //
     }
 
     /**
@@ -39,6 +38,6 @@ class UType implements Rule
      */
     public function message()
     {
-        return 'The User type must be a valid type of user (admin or staff)';
+        return 'The validation error message.';
     }
 }

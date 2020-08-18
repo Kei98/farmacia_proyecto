@@ -15,7 +15,7 @@ class CreateDrugsTable extends Migration
     {
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
-            $table->string("name", 60);
+            $table->string("name", 40);
             $table->string("description", 500);
             $table->string("administration", 15);
             $table->double("price");
