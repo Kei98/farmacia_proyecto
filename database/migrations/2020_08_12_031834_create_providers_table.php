@@ -17,7 +17,7 @@ class CreateProvidersTable extends Migration
             $table->id();
             $table->string("name", 50);
             $table->string("phone_number", 13);
-            $table->foreignId("id_company")->references("id")->on("companies");
+            $table->foreignId("id_company")->references("id")->on("companies")->onDelete("cascade");
             $table->timestamps();
         });
     }

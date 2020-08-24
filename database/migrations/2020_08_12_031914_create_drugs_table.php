@@ -19,7 +19,7 @@ class CreateDrugsTable extends Migration
             $table->string("description", 500);
             $table->string("administration", 15);
             $table->double("price");
-            $table->foreignId("id_provider")->references("id")->on("providers");
+            $table->foreignId("id_provider")->references("id")->on("providers")->onDelete("cascade");
             $table->timestamps();
         });
     }

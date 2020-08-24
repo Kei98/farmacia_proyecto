@@ -18,16 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Hay que hacerlo después de la autenticación
 
-Route::apiResource("drugs", "DrugController");
+Route::apiResource("drug", "DrugController");
 
-Route::apiResource("inventories", "InventoryController");
+Route::apiResource("inventory", "InventoryController");
 
-Route::apiResource("detail_lines", "DetailLineController");
+Route::apiResource("detail_line", "DetailLineController");
 
-Route::apiResource("companies", "CompanyController");
+Route::apiResource("company", "CompanyController");
 
-Route::apiResource("sales", "SaleController");
+Route::apiResource("sale", "SaleController");
 
-Route::apiResource("providers", "ProviderController");
+Route::apiResource("provider", "ProviderController");
+
+Route::apiResource("client", "ClientController");

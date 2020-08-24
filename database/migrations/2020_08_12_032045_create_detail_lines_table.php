@@ -19,8 +19,8 @@ class CreateDetailLinesTable extends Migration
             $table->double("drug_price");
             $table->double("amount");
             $table->double("subtotal");
-            $table->foreignId("id_sale")->references("id")->on("sales");
-            $table->foreignId("id_drug")->references("id")->on("drugs");
+            $table->foreignId("id_sale")->references("id")->on("sales")->onDelete("cascade");
+            $table->foreignId("id_drug")->references("id")->on("drugs")->onDelete("cascade");
             $table->timestamps();
         });
     }

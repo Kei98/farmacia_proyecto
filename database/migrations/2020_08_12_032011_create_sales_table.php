@@ -15,12 +15,12 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string("date", 16);
+            $table->dateTime("date");
             $table->double("discount");
             $table->double("tax");
             $table->double("final_amount");
-            $table->foreignId("id_staff")->references("id")->on("users");
-            $table->foreignId("id_client")->references("id")->on("clients");
+            $table->foreignId("id_staff")->references("id")->on("users")->onDelete("cascade");
+            $table->foreignId("id_client")->references("id")->on("clients")->onDelete("cascade");
             $table->timestamps();
         });
     }

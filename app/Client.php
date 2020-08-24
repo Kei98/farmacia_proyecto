@@ -10,8 +10,7 @@ class Client extends Model
 
 
 //    cambiar
-    public function providers() {
-
-        return $this->hasMany("App\Provider", "id_company");
+    public function sales() {
+        return $this->hasMany("App\Sale", "id_client");
     }
 }

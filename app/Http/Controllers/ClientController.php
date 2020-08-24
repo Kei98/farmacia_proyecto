@@ -14,17 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Client::with("sales")->get();
     }
 
     /**
@@ -35,7 +25,13 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "id_person" => "required",
+            "tel_number" => "required"
+        ]);
+        $client = Client::create($fields);
+        return response()->json("Successfully added", 201);
     }
 
     /**
@@ -46,18 +42,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Client $client)
-    {
-        //
+        return $client;
     }
 
     /**
@@ -69,7 +54,13 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $fields = $request->validate([
+            "name" => "required",
+            "id_person" => "required",
+            "tel_number" => "required"
+        ]);
+        $client->update($fields);
+        return response()->json("Successfully added", 200);
     }
 
     /**
@@ -80,6 +71,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return response()->json("Succesfully deleted", 200);
     }
 }
