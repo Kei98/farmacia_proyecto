@@ -12,6 +12,6 @@ class Provider extends Model
         return $this->belongsTo("App\Company", "id_company");
     }
     public function drugs() {
-        return $this->hasMany("App\Drug", "id_drug");
+        return $this->hasMany("App\Drug", "id_provider");
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Drug;
+use App\Provider;
 use App\Rules\Administration;
 use App\User;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class DrugController extends Controller
             "id_provider" => ["required", "integer", "min:1"]
         ]);
 
-        $drug = Drug::created($fields);
+        $drug = Drug::create($fields);
         return response()->json("Successfully added", 201);
     }
 
@@ -55,7 +56,7 @@ class DrugController extends Controller
      */
     public function show(Drug $drug)
     {
-        return  $drug;
+        return ["drug" => $drug, "provider" => Provider::find($drug->id_provider)];
     }
 
     /**
@@ -91,9 +92,4 @@ class DrugController extends Controller
         return response()->json("Successfully deleted", 200);
     }
 
-
-    public function getAll()
-    {
-        return Drug::get();
-    }
 }

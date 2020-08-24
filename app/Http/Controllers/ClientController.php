@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Rules\TelNumber;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -26,9 +27,9 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "name" => "required",
-            "id_person" => "required",
-            "tel_number" => "required"
+            "name" => ["required", "string", "min:10", "max:50"],
+            "id_person" => ["required", "integer", "min:100000000", "min:999999999", "unique:providers"],
+            "tel_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
         ]);
         $client = Client::create($fields);
         return response()->json("Successfully added", 201);
@@ -55,9 +56,9 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $fields = $request->validate([
-            "name" => "required",
-            "id_person" => "required",
-            "tel_number" => "required"
+            "name" => ["required", "string", "min:10", "max:50"],
+            "id_person" => ["required", "integer", "min:100000000", "min:999999999", "unique:providers"],
+            "tel_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
         ]);
         $client->update($fields);
         return response()->json("Successfully added", 200);

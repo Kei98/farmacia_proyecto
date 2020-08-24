@@ -17,7 +17,7 @@ class SaleSeeder extends Seeder
             "tax" => "200",
             "final_amount" => "3400",
             "id_staff" => "2",
-            "id_client" => "3"
+            "id_client" => "1"
         ]);
     }
 }

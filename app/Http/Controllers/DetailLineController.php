@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Detail_line;
+use App\Sale;
 use Illuminate\Http\Request;
 
 class DetailLineController extends Controller
@@ -46,7 +47,7 @@ class DetailLineController extends Controller
      */
     public function show(Detail_line $detail_line)
     {
-        return  $detail_line;
+        return ["detail_line" => $detail_line, "id_sale" => Sale::find($detail_line->id_sale)];
     }
 
 
@@ -60,12 +61,12 @@ class DetailLineController extends Controller
     public function update(Request $request, Detail_line $detail_line)
     {
         $fields = $request->validate([
-            "drug_name" => "required",
-            "drug_price" => "required",
-            "amount" => "required",
-            "subtotal" => "required",
-            "id_sale" => "required",
-            "id_drug" => "required"
+            "drug_name" => ["required","min:3", "max:40"],
+            "drug_price" => ["required", "numeric"],
+            "amount" => ["required", "integer", "min:1"],
+            "subtotal" => ["required", "numeric"],
+            "id_sale" => ["required", "integer", "min:1"],
+            "id_drug" => ["required", "integer", "min:1"]
         ]);
 
         $detail_line ->update($fields);

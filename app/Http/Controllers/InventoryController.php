@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Drug;
 use App\Inventory;
 use Illuminate\Http\Request;
 
@@ -42,7 +43,7 @@ class InventoryController extends Controller
      */
     public function show(Inventory $inventory)
     {
-        return $inventory;
+        return ["inventory" => $inventory, "drug" => Drug::find($inventory->id_drug)];
     }
 
     /**

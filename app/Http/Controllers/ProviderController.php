@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Provider;
 use App\Rules\TelNumber;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class ProviderController extends Controller
      */
     public function show(Provider $provider)
     {
-        return $provider;
+        return ["provider" => $provider, "company" => Company::find($provider->id_company)];
     }
 
 

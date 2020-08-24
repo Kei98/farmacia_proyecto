@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Rules\Date;
 use App\Sale;
 use Illuminate\Http\Request;
@@ -17,7 +18,6 @@ class SaleController extends Controller
     {
         return Sale::with("detail_lines")->get();
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -49,7 +49,7 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        return $sale;
+        return ["sale" => $sale, "client" => Client::find($sale->id_client)];
     }
 
     /**

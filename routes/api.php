@@ -23,7 +23,9 @@ Route::apiResource("drug", "DrugController");
 
 Route::apiResource("inventory", "InventoryController");
 
-Route::apiResource("detail_line", "DetailLineController");
+Route::apiResource("detailline", "DetailLineController");
+
+Route::apiResource("drug", "DrugController");
 
 Route::apiResource("company", "CompanyController");
 

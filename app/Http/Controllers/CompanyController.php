@@ -27,10 +27,10 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "name" => "required",
-            "phone_number" => "required",
-            "legal_id" => "required",
-            "address" => "requiered"
+            "name" => ["required", "max:30", "string"],
+            "phone_number" => ["required", "string", "min:8", "max:13"],
+            "legal_id" => ["required", "integer", "min:1"],
+            "address" => ["required", "min:10", "max:225"]
         ]);
         $company = Company::create($fields);
         return response()->json("Successfully added", 201);
@@ -58,10 +58,10 @@ class CompanyController extends Controller
     public function update(Request $request, Company $company)
     {
         $fields = $request->validate([
-            "name" => "required",
-            "phone_number" => "required",
-            "legal_id" => "required",
-            "address" => "requiered"
+            "name" => ["required", "max:30", "string"],
+            "phone_number" => ["required", "string", "min:8", "max:13"],
+            "legal_id" => ["required", "integer", "min:1"],
+            "address" => ["required", "min:10", "max:225"]
         ]);
         $company -> update($fields);
         return response()->json("Successfully modified", 200);
