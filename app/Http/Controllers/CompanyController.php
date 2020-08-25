@@ -29,7 +29,7 @@ class CompanyController extends Controller
         $fields = $request->validate([
             "name" => ["required", "max:30", "string"],
             "phone_number" => ["required", "string", "min:12", "max:13"],
-            "legal_id" => ["required", "integer", "min:1"],
+            "legal_id" => ["required", "string", "min:1"],
             "address" => ["required", "min:10", "max:225"]
         ]);
         $company = Company::create($fields);
@@ -60,7 +60,7 @@ class CompanyController extends Controller
         $fields = $request->validate([
             "name" => ["required", "max:30", "string"],
             "phone_number" => ["required", "string", "min:12", "max:13"],
-            "legal_id" => ["required", "integer", "min:1"],
+            "legal_id" => ["required", "string", "min:1"],
             "address" => ["required", "min:10", "max:225"]
         ]);
         $company -> update($fields);
