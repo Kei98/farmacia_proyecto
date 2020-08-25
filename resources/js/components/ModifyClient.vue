@@ -1,5 +1,5 @@
 <template>
-    <div v-if="drug != null">
+    <div v-if="client != null">
         <form @submit="modifyData()" @submit.prevent method="POST">
 
             <label for="name">Name: </label>
@@ -54,10 +54,11 @@ name: "ModifyClient",
         loadClient() {
             axios.get("http://farmacia.test/api/client/" + this.id)
                 .then(response => {
-                    this.client = response.data.client;
+                    this.client = response.data;
                 })
         },
         modifyData() {
+            console.log(this.client);
             axios.patch("http://farmacia.test/api/client/" + this.id, this.client)
                 .then(response => {
                     if(response.status === 200) {

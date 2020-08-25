@@ -44,7 +44,7 @@ export default {
     $pink: #f0abae;
     $red: #bf2f50;
 
-    .drugsList {
+    .companiesList {
         border: 2px solid $red;
         width: 500px;
         margin: 0 auto;

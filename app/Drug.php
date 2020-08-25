@@ -13,7 +13,7 @@ class Drug extends Model
         return $this->belongsTo("App\Provider", "id_provider");
     }
     public function inventories() {
-        return $this->belongsTo("App\Inventory", "id_drug");
+        return $this->hasOne("App\Inventory", "id_drug");
     }
     public function detail_lines() {
         return $this->belongsTo("App\Detail_line", "id_sale");

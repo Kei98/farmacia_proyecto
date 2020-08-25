@@ -1,5 +1,5 @@
 <template>
-    <div v-if="drug != null">
+    <div v-if="company != null">
         <form @submit="modifyData()" @submit.prevent method="POST">
 
             <label for="name">Name: </label>
@@ -15,7 +15,7 @@
             </div>
 
             <label for="legal_id">Legal ID: </label>
-            <input id="legal_id" name="legal_id" required type="text" v-model="company.legal_id">
+            <input id="legal_id" name="legal_id" required type="text" v-model="legalId">
             <div class="alert alert-danger" v-if="errors && errors.legal_id">
                 {{ errors.legal_id[0] }}
             </div>
@@ -57,11 +57,21 @@ name: "ModifyCompany",
     mounted() {
         this.loadCompany();
     },
+    computed: {
+        legalId: {
+            get() {
+                return this.company.legal_id.toString();
+            },
+            set(value) {
+                this.company.legal_id = value;
+            }
+        }
+    },
     methods: {
         loadCompany() {
             axios.get("http://farmacia.test/api/company/" + this.id)
                 .then(response => {
-                    this.company = response.data.company;
+                    this.company = response.data;
                 })
         },
         modifyData() {

@@ -50,9 +50,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/client">Clients</a>
+                                        <a class="dropdown-item" href="/company">Companies</a>
+                                        <a class="dropdown-item" href="/home">Drugs</a>
+                                        <a class="dropdown-item" href="/inventory">Inventory</a>
+                                        <a class="dropdown-item" href="/provider">Providers</a>
+                                        <a class="dropdown-item" href="/sale">Sales</a>
+
                                     @if (Route::has('register'))
                                         <a class="dropdown-item" href="{{ route('register') }}">Register</a>
                                     @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

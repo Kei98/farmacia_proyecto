@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetailLinesTable extends Migration
+class CreateSaleDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateDetailLinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_lines', function (Blueprint $table) {
+        Schema::create('sale_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("id_drug")->references("id")->on("drugs")->onDelete("cascade");
-            $table->double("amount");
-            $table->double("subtotal");
+            $table->foreignId("id_sale")->references("id")->on("sales")->onDelete("cascade");
+            $table->foreignId("id_detail_line")->references("id")->on("detail_lines")->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateDetailLinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_lines');
+        Schema::dropIfExists('sale_details');
     }
 }

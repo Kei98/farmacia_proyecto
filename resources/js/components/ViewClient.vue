@@ -3,7 +3,7 @@
 
         <h4>ID: <span>{{ client.id }}</span></h4>
         <h4>Name: <span>{{ client.name }}</span></h4>
-        <h4>Person ID:: <span>{{ client.id_person}}</span></h4>
+        <h4>Person ID: <span>{{ client.id_person}}</span></h4>
         <h4>Telephone number: <span>{{ client.tel_number }}</span></h4>
 
         <router-link class="button" :to="{ name: 'ModifyClient', params: { id: client.id }}">Modify</router-link>
@@ -22,7 +22,7 @@ export default {
     },
     data() {
         return {
-            drug: null,
+            client: null,
         }
     },
     mounted() {
@@ -33,7 +33,7 @@ export default {
             axios.get("http://farmacia.test/api/client/" + this.id)
                 .then(response => {
                     console.log(response);
-                    this.client = response.data.client;
+                    this.client = response.data;
                 })
         },
         deleteData() {

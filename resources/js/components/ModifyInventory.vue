@@ -2,7 +2,7 @@
     <div v-if="drug != null">
         <form @submit="modifyData()" @submit.prevent method="POST">
 
-            <label for="amount">Name: </label>
+            <label for="amount">Amount: </label>
             <input id="amount" name="amount" required type="number" v-model="inventory.amount">
             <div class="alert alert-danger" v-if="errors && errors.amount">
                 {{ errors.amount[0] }}
@@ -43,11 +43,13 @@ name: "ModifyInventory",
             inventory: null,
             drug: null,
             message: "",
+            drugs: [],
             errors: {}
         }
     },
     mounted() {
         this.loadInventory();
+        this.loadDrugs();
     },
     methods: {
         loadInventory() {
@@ -55,6 +57,12 @@ name: "ModifyInventory",
                 .then(response => {
                     this.inventory = response.data.inventory;
                     this.drug = response.data.drug;
+                })
+        },
+        loadDrugs() {
+            axios.get("http://farmacia.test/api/drug/")
+                .then(response => {
+                    this.drugs = response.data;
                 })
         },
         modifyData() {

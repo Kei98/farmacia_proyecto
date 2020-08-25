@@ -1,5 +1,5 @@
 <template>
-    <div v-if="drug != null">
+    <div v-if="provider != null">
         <form @submit="modifyData()" @submit.prevent method="POST">
 
             <label for="name">Name: </label>
@@ -10,14 +10,14 @@
 
             <label for="phone_number">Phone Number: </label>
             <input id="phone_number" name="phone_number" required type="text" v-model="provider.phone_number">
-            <div class="alert alert-danger" v-if="errors && errors.name">
+            <div class="alert alert-danger" v-if="errors && errors.phone_number">
                 {{ errors.phone_number[0] }}
             </div>
 
             <label for="id_company">Company ID: </label>
             <select id="id_company" name="id_company" v-model="provider.id_company">
                 <option v-bind:value="company.id" v-for="company in companies">
-                    {{ provider.id }}, {{ provider.name }}
+                    {{ company.id }}, {{ company.name }}
                 </option>
             </select>
             <div class="alert alert-danger" v-if="errors && errors.id_company">
@@ -50,13 +50,16 @@ export default {
         return {
             provider: null,
             company: null,
+            companies: [],
             message: "",
             errors: {}
         }
     },
     mounted() {
         this.loadProviders();
+        this.loadCompanies();
     },
+
     methods: {
         loadProviders() {
             axios.get("http://farmacia.test/api/provider/" + this.id)
@@ -65,8 +68,14 @@ export default {
                     this.company = response.data.company;
                 })
         },
+        loadCompanies() {
+            axios.get("http://farmacia.test/api/company/")
+                .then(response => {
+                    this.companies = response.data;
+                })
+        },
         modifyData() {
-            axios.patch("http://farmacia.test/api/company/" + this.id, this.company)
+            axios.patch("http://farmacia.test/api/provider/" + this.id, this.provider)
                 .then(response => {
                     if(response.status === 200) {
                         this.message = response.data;

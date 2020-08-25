@@ -6,6 +6,7 @@ use App\Client;
 use App\Rules\Date;
 use App\Sale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
@@ -16,7 +17,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        return Sale::with("detail_lines")->get();
+        return Sale::with("sale_details")->get();
     }
 
     /**
@@ -28,7 +29,7 @@ class SaleController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "date" => ["required", "string", "min:16", "max:16", new Date],
+            "date" => ["required", "string", "min:10", "max:10", "date"],
             "discount" => ["required", "numeric", "min:0"],
             "tax" => ["required", "numeric", "min:0"],
             "final_amount" => ["required", "numeric"],
@@ -62,7 +63,7 @@ class SaleController extends Controller
     public function update(Request $request, Sale $sale)
     {
         $fields = $request->validate([
-            "date" => ["required", "string", "min:16", "max:16", new Date],
+            "date" => ["required", "string", "min:10", "max:10", "date"],
             "discount" => ["required", "numeric", "min:0"],
             "tax" => ["required", "numeric", "min:0"],
             "final_amount" => ["required", "numeric"],

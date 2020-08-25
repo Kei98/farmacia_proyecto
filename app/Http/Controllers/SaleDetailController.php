@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-use App\Rules\TelNumber;
+use App\Detail_line;
+use App\SaleDetail;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class SaleDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return Client::with("sales")->get();
+        return SaleDetail::with("detail_lines")->get();
     }
 
     /**
@@ -27,52 +27,53 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            "name" => ["required", "string", "min:5", "max:50"],
-            "id_person" => ["required", "integer", "min:100000000", "max:999999999", "unique:clients"],
-            "tel_number" => ["required", "string", "min:12", "max:13", "unique:clients" , new TelNumber],
+            "id_sale" => ["required", "integer", "min:1"],
+            "id_detail_line" => ["required", "integer", "min:1"]
         ]);
-        $client = Client::create($fields);
+
+        $saleDetail = SaleDetail::create($fields);
         return response()->json("Successfully added", 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Client  $client
+     * @param  \App\SaleDetail  $saleDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(SaleDetail $saleDetail)
     {
-        return $client;
+        return ["saleDetail" => $saleDetail, "id_detail_line" => Detail_line::find($saleDetail->id_detail_line),
+            "id_sale" => Sale::find($saleDetail->id_sale)];
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Client  $client
+     * @param  \App\SaleDetail  $saleDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, SaleDetail $saleDetail)
     {
         $fields = $request->validate([
-            "name" => ["required", "string", "min:5", "max:50"],
-            "id_person" => ["required", "integer", "min:100000000", "max:999999999"],
-            "tel_number" => ["required", "string", "min:12", "max:13", new TelNumber],
+            "id_sale" => ["required", "integer", "min:1"],
+            "id_detail_line" => ["required", "integer", "min:1"]
         ]);
-        $client->update($fields);
+
+        $saleDetail->update($fields);
         return response()->json("Successfully modified", 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Client  $client
+     * @param  \App\SaleDetail  $saleDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(SaleDetail $saleDetail)
     {
-        $client->delete();
+        $saleDetail->delete();
         return response()->json("Succesfully deleted", 200);
     }
 }

@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             DrugSeeder::class,
             InventorySeeder::class,
             SaleSeeder::class,
-            DetailLineSeeder::class
+            DetailLineSeeder::class,
+            SaleDetailSeeder::class
         ]);
     }
 }

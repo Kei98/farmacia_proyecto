@@ -2,7 +2,7 @@
     <div>
         <form @submit="insertData()" @submit.prevent method="POST">
 
-            <label for="amount">Name: </label>
+            <label for="amount">Amount: </label>
             <input id="amount" name="amount" required type="number" v-model="inventory.amount">
             <div class="alert alert-danger" v-if="errors && errors.amount">
                 {{ errors.amount[0] }}
@@ -20,7 +20,7 @@
 
             <input class="button" type="submit" value="Save">
 
-            <router-link :to="{ name: 'ListDrugs'}" class="button">
+            <router-link :to="{ name: 'ListInventories'}" class="button">
                 Go back
             </router-link>
 
@@ -40,7 +40,7 @@ export default {
         return {
             message: "",
             errors: {},
-            drugs: {},
+            drugs: [],
 
             inventory: {
                 amount: 0,
@@ -49,13 +49,13 @@ export default {
         }
     },
     mounted() {
-        this.loadInventories();
+        this.loadDrugs();
     },
     methods: {
-        loadInventories() {
-            axios.get("http://farmacia.test/api/inventory/")
+        loadDrugs() {
+            axios.get("http://farmacia.test/api/drug/")
                 .then(response => {
-                    this.inventories = response.data;
+                    this.drugs = response.data;
                 })
         },
         insertData() {

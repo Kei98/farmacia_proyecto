@@ -19,8 +19,8 @@ class CreateSalesTable extends Migration
             $table->double("discount");
             $table->double("tax");
             $table->double("final_amount");
-            $table->foreignId("id_staff")->references("id")->on("users")->onDelete("cascade");
             $table->foreignId("id_client")->references("id")->on("clients")->onDelete("cascade");
+            $table->foreignId("id_staff")->references("id")->on("users")->onDelete("cascade");
             $table->timestamps();
         });
     }

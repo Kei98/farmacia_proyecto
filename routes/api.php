@@ -18,9 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::apiResource("drug", "DrugController");
-
 Route::apiResource("inventory", "InventoryController");
 
 Route::apiResource("detailline", "DetailLineController");
@@ -34,3 +31,5 @@ Route::apiResource("sale", "SaleController");
 Route::apiResource("provider", "ProviderController");
 
 Route::apiResource("client", "ClientController");
+
+Route::apiResource("actualUser", "UserController");

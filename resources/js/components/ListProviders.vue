@@ -29,10 +29,10 @@ name: "ListProviders",
         this.loadProviders();
     },
     methods: {
-        loadDrugs: function () {
+        loadProviders: function () {
             axios.get("http://farmacia.test/api/provider")
                 .then(response => {
-                    this.provider = response.data;
+                    this.providers = response.data;
                 })
         }
     }
@@ -43,7 +43,7 @@ name: "ListProviders",
     $pink: #f0abae;
     $red: #bf2f50;
 
-    .drugsList {
+    .providersList {
         border: 2px solid $red;
         width: 500px;
         margin: 0 auto;

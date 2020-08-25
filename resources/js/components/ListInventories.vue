@@ -32,7 +32,7 @@ name: "ListInventories",
         loadInventories: function () {
             axios.get("http://farmacia.test/api/inventory")
                 .then(response => {
-                    this.invenntories = response.data;
+                    this.inventories = response.data;
                 })
         }
     }

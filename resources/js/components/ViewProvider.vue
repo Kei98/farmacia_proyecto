@@ -58,7 +58,7 @@ export default {
     $pink: #f0abae;
     $red: #bf2f50;
 
-    .infoDrug {
+    .infoProvider {
         border: 2px solid $red;
         padding: 50px 30px;
         width: 500px;

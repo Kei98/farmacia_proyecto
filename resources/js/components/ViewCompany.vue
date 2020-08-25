@@ -35,7 +35,7 @@ name: "ViewCompany",
             axios.get("http://farmacia.test/api/company/" + this.id)
                 .then(response => {
                     console.log(response);
-                    this.company = response.data.company;
+                    this.company = response.data;
                 })
         },
         deleteData() {
@@ -55,7 +55,7 @@ name: "ViewCompany",
     $pink: #f0abae;
     $red: #bf2f50;
 
-    .infoDrug {
+    .infoCompany {
         border: 2px solid $red;
         padding: 50px 30px;
         width: 500px;

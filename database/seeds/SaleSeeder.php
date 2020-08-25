@@ -12,7 +12,7 @@ class SaleSeeder extends Seeder
     public function run()
     {
         DB::table('sales')->insert([
-            "date" => "13/08/2020",
+            "date" => "2020-08-13",
             "discount" => "0",
             "tax" => "200",
             "final_amount" => "3400",

@@ -33,10 +33,13 @@ Vue.component('modify-company', require('./components/ModifyCompany').default);
 Vue.component('view-company', require('./components/ViewCompany').default);
 Vue.component('insert-company', require('./components/InsertCompany').default);
 
-Vue.component('list-detail-line', require('./components/ListDetailLines').default);
 Vue.component('modify-detail-line', require('./components/ModifyDetailLine').default);
 Vue.component('view-detail-line', require('./components/ViewDetailLine').default);
-Vue.component('insert-detail-line', require('./components/InsertDetailLine').default);
+
+// Vue.component('list-sale-detail', require('./components/ListDetailLines').default);
+// Vue.component('modify-sale-detail', require('./components/ModifyDetailLine').default);
+// Vue.component('view-sale-detail', require('./components/ViewDetailLine').default);
+// Vue.component('insert-sale-detail', require('./components/InsertDetailLine').default);
 
 Vue.component('list-drug', require('./components/ListDrugs').default);
 Vue.component('modify-drug', require('./components/ModifyDrug').default);

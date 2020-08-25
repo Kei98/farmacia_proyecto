@@ -16,9 +16,8 @@ import ViewDrug from "./components/ViewDrug";
 import InsertDrug from "./components/InsertDrug";
 import ModifyDrug from "./components/ModifyDrug";
 
-import ListDetailLines from "./components/ListDetailLines";
+// import ListDetailLines from "./components/ListDetailLines";
 import ViewDetailLine from "./components/ViewDetailLine";
-import InsertDetailLine from "./components/InsertDetailLine";
 import ModifyDetailLine from "./components/ModifyDetailLine";
 
 import ListInventories from "./components/ListInventories";
@@ -108,20 +107,10 @@ export default new Router({
             props: true
         },
         {
-            path: "/detailline",
-            name: "ListDetailLines",
-            component: ListDetailLines
-        },
-        {
             path: "/modifydetailline/:id",
             name: "ModifyDetailLine",
             component: ModifyDetailLine,
             props: true
-        },
-        {
-            path: "/insertdetailline",
-            name: "InsertDetailLine",
-            component: InsertDetailLine
         },
         {
             path: "/detailline/:id",
