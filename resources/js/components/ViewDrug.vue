@@ -78,7 +78,7 @@ export default {
         .button {
             margin-top: 20px;
         }
-        .mensaje{
+        .messages{
             font-size: 20px;
         }
     }
