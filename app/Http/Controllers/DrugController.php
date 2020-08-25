@@ -38,7 +38,7 @@ class DrugController extends Controller
 //        }
         $fields = $request->validate([
             "name" => ["required", "string", "min:3", "max:40"],
-            "description" => ["required", "string", "min:50", "max:500"],
+            "description" => ["required", "string", "min:30", "max:500"],
             "administration" => ["required", "string", new Administration, "max:15"],
             "price" => ["required", "numeric"],
             "id_provider" => ["required", "integer", "min:1"]
@@ -70,7 +70,7 @@ class DrugController extends Controller
     {
         $fields = $request->validate([
             "name" => ["required", "string", "min:3", "max:40"],
-            "description" => ["required", "string", "min:50", "max:500"],
+            "description" => ["required", "string", "min:30", "max:500"],
             "administration" => ["required", "string", new Administration, "max:15"],
             "price" => ["required", "numeric"],
             "id_provider" => ["required", "integer", "min:1"]

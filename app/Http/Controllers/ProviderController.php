@@ -30,7 +30,7 @@ class ProviderController extends Controller
     {
         $fields = $request->validate([
             "name" => ["required", "string", "min:10", "max:50"],
-            "phone_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
+            "phone_number" => ["required", "string", "min:12", "max:13", "unique:providers" , new TelNumber],
             "id_company" => ["required", "integer", "min:1"]
         ]);
         $provider = Provider::create($fields);
@@ -60,7 +60,7 @@ class ProviderController extends Controller
     {
         $fields = $request->validate([
             "name" => ["required", "string", "min:10", "max:50"],
-            "phone_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
+            "phone_number" => ["required", "string", "min:12", "max:13", "unique:providers" , new TelNumber],
             "id_company" => ["required", "integer", "min:1"]
         ]);
         $provider -> update($fields);

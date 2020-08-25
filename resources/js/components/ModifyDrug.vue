@@ -4,9 +4,15 @@
 
             <label for="name">Name: </label>
             <input id="name" name="name" required type="text" v-model="drug.name">
+            <div class="alert alert-danger" v-if="errors && errors.name">
+                {{ errors.name[0] }}
+            </div>
 
             <label for="description">Description: </label>
             <input id="description" name="description" required type="text" v-model="drug.description">
+            <div class="alert alert-danger" v-if="errors && errors.description">
+                {{ errors.description[0] }}
+            </div>
 
             <label for="administration">Administration: </label>
             <select id="administration" name="administration" v-model="drug.administration">
@@ -14,9 +20,15 @@
                     {{ administration }}
                 </option>
             </select>
+            <div class="alert alert-danger" v-if="errors && errors.administration">
+                {{ errors.administration[0] }}
+            </div>
 
             <label for="price">Price: </label>
             <input id="price" name="price" required type="number" v-model="drug.price">
+            <div class="alert alert-danger" v-if="errors && errors.price">
+                {{ errors.price[0] }}
+            </div>
 
             <label for="id_provider">Provider ID: </label>
             <select id="id_provider" name="id_provider" v-model="drug.id_provider">
@@ -24,6 +36,9 @@
                     {{ provider.id }}, {{ provider.name }}
                 </option>
             </select>
+            <div class="alert alert-danger" v-if="errors && errors.id_provider">
+                {{ errors.id_provider[0] }}
+            </div>
 
             <input class="button" type="submit" value="Save">
 
@@ -49,7 +64,8 @@ export default {
             provider: null,
             administrationForm: ["ocular", "parenteral", "topical", "sublingual", "otic",
                 "intranasal", "inhalation", "rectal", "vaginal", "oral"],
-            message: ""
+            message: "",
+            errors: {}
         }
     },
     mounted() {
@@ -69,7 +85,9 @@ export default {
                     if(response.status === 200) {
                         this.message = response.data;
                     }
-                })
+                }).catch(error => {
+                    this.errors = error.response.data.errors;
+            })
         }
     }
 }

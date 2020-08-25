@@ -12,11 +12,11 @@ class Sale extends Model
         return $this->hasMany("App\Detail_line", "id_sale");
     }
 
-    public function cUsers() {
+    public function clients() {
         return $this->belongsTo("App\User", "id_client");
     }
 
-    public function sUsers() {
+    public function staffs() {
         return $this->belongsTo("App\User", "id_staff");
     }
 }

@@ -2006,12 +2006,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "InsertDrug",
   data: function data() {
     return {
       message: "",
+      errors: {},
       providers: {},
       administrationForm: ["ocular", "parenteral", "topical", "sublingual", "otic", "intranasal", "inhalation", "rectal", "vaginal", "oral"],
       drug: {
@@ -2031,7 +2048,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://farmacia.test/api/provider/").then(function (response) {
-        console.log(response);
         _this.providers = response.data;
       });
     },
@@ -2048,8 +2064,10 @@ __webpack_require__.r(__webpack_exports__);
             price: 0,
             id_provider: 0
           };
-        } else {
-          _this2.message = response.data;
+        }
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this2.errors = error.response.data.errors;
         }
       });
     }
@@ -2386,6 +2404,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ModifyDrug",
   props: {
@@ -2396,7 +2429,8 @@ __webpack_require__.r(__webpack_exports__);
       drug: null,
       provider: null,
       administrationForm: ["ocular", "parenteral", "topical", "sublingual", "otic", "intranasal", "inhalation", "rectal", "vaginal", "oral"],
-      message: ""
+      message: "",
+      errors: {}
     };
   },
   mounted: function mounted() {
@@ -2418,6 +2452,8 @@ __webpack_require__.r(__webpack_exports__);
         if (response.status === 200) {
           _this2.message = response.data;
         }
+      })["catch"](function (error) {
+        _this2.errors = error.response.data.errors;
       });
     }
   }
@@ -39150,6 +39186,14 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _vm.errors && _vm.errors.name
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _vm._v(
+                "\n            " + _vm._s(_vm.errors.name[0]) + "\n        "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _c("label", { attrs: { for: "description" } }, [
           _vm._v("Description: ")
         ]),
@@ -39179,6 +39223,16 @@ var render = function() {
             }
           }
         }),
+        _vm._v(" "),
+        _vm.errors && _vm.errors.description
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.errors.description[0]) +
+                  "\n        "
+              )
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("label", { attrs: { for: "administration" } }, [
           _vm._v("Administration: ")
@@ -39224,6 +39278,16 @@ var render = function() {
           0
         ),
         _vm._v(" "),
+        _vm.errors && _vm.errors.administration
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.errors.administration[0]) +
+                  "\n        "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _c("label", { attrs: { for: "price" } }, [_vm._v("Price: ")]),
         _vm._v(" "),
         _c("input", {
@@ -39246,6 +39310,14 @@ var render = function() {
             }
           }
         }),
+        _vm._v(" "),
+        _vm.errors && _vm.errors.price
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _vm._v(
+                "\n            " + _vm._s(_vm.errors.price[0]) + "\n        "
+              )
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("label", { attrs: { for: "id_provider" } }, [
           _vm._v("Provider ID: ")
@@ -39294,6 +39366,16 @@ var render = function() {
           }),
           0
         ),
+        _vm._v(" "),
+        _vm.errors && _vm.errors.id_provider
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.errors.id_provider[0]) +
+                  "\n        "
+              )
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("input", {
           staticClass: "button",
@@ -39734,6 +39816,14 @@ var render = function() {
               }
             }),
             _vm._v(" "),
+            _vm.errors && _vm.errors.name
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.errors.name[0]) + "\n        "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("label", { attrs: { for: "description" } }, [
               _vm._v("Description: ")
             ]),
@@ -39763,6 +39853,16 @@ var render = function() {
                 }
               }
             }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.description
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.errors.description[0]) +
+                      "\n        "
+                  )
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c("label", { attrs: { for: "administration" } }, [
               _vm._v("Administration: ")
@@ -39810,6 +39910,16 @@ var render = function() {
               0
             ),
             _vm._v(" "),
+            _vm.errors && _vm.errors.administration
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.errors.administration[0]) +
+                      "\n        "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("label", { attrs: { for: "price" } }, [_vm._v("Price: ")]),
             _vm._v(" "),
             _c("input", {
@@ -39837,6 +39947,16 @@ var render = function() {
                 }
               }
             }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.price
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.errors.price[0]) +
+                      "\n        "
+                  )
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c("label", { attrs: { for: "id_provider" } }, [
               _vm._v("Provider ID: ")
@@ -39884,6 +40004,16 @@ var render = function() {
                 ])
               ]
             ),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.id_provider
+              ? _c("div", { staticClass: "alert alert-danger" }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.errors.id_provider[0]) +
+                      "\n        "
+                  )
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c("input", {
               staticClass: "button",

@@ -29,7 +29,7 @@ class ClientController extends Controller
         $fields = $request->validate([
             "name" => ["required", "string", "min:10", "max:50"],
             "id_person" => ["required", "integer", "min:100000000", "min:999999999", "unique:providers"],
-            "tel_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
+            "tel_number" => ["required", "string", "min:12", "max:13", "unique:providers" , new TelNumber],
         ]);
         $client = Client::create($fields);
         return response()->json("Successfully added", 201);
@@ -58,7 +58,7 @@ class ClientController extends Controller
         $fields = $request->validate([
             "name" => ["required", "string", "min:10", "max:50"],
             "id_person" => ["required", "integer", "min:100000000", "min:999999999", "unique:providers"],
-            "tel_number" => ["required", "string", "max:13", "unique:providers" , new TelNumber],
+            "tel_number" => ["required", "string", "min:12", "max:13", "unique:providers" , new TelNumber],
         ]);
         $client->update($fields);
         return response()->json("Successfully added", 200);
